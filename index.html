@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="cc-photos-importer-uxp.css" rel="stylesheet"/>
+    <link href="lr-importer-uxp/lr-importer-uxp.css" rel="stylesheet"/>
+    <script src="lr-importer-uxp/lr-importer-uxp-config.js" type="text/javascript"></script>
+    <script src="lr-importer-uxp/lr-importer-uxp.js" type="text/javascript"></script>
+</head>
+<body style="height: 100%">
+    <div id="lr-importer-uxp" style="height: 100%"></div>
+    <script>
+        if (window.importerProps &&
+            window.importerProps.onSDKLoad &&
+            typeof window.importerProps.onSDKLoad === "function") {
+            window.importerProps.onSDKLoad(window.LrSDK);
+        } 
+        const attachImporter = require("./cc-photos-importer-uxp.js")["attachImporter"];
+        if (attachImporter && typeof attachImporter === "function") {
+            attachImporter(document.getElementById("lr-importer-uxp"), window.importerProps);
+        }
+    </script>
+</body>
+</html>
